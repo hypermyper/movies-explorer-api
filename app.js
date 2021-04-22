@@ -5,6 +5,8 @@ const { errors } = require('celebrate');
 const helmet = require('helmet');
 const cors = require('cors');
 const routes = require('./routes/index');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { BASE_URL } = require('./constants');
 
 const app = express();
 const { PORT = 3000 } = process.env;
@@ -37,11 +39,13 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(requestLogger);
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.options('*', cors());
 app.use(routes);
+app.use(errorLogger);
 app.use(errors());
 
 app.listen(PORT, () => {
