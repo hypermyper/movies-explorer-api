@@ -11,7 +11,7 @@ const errorHandler = require('./middlewares/errorHandler');
 const { BASE_URL } = require('./utils/constants');
 
 const app = express();
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 
 mongoose.connect(BASE_URL, {
   useNewUrlParser: true,
