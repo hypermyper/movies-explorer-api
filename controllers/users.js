@@ -4,7 +4,7 @@ const User = require('../models/user');
 const NotFoundError = require('../errors/not-found-error');
 const UnauthorizedError = require('../errors/unauthorized-error');
 const ConflictError = require('../errors/conflict-error');
-const { JWT_SECRET } = require('../constants');
+const { JWT_SECRET } = require('../utils/constants');
 
 const { NODE_ENV } = process.env;
 
